@@ -3,7 +3,7 @@ name = "shade-agent-py"
 version = "0.1.0"
 description = "A Python library for shade agent functionality"
 readme = "README.md"
-license = {text = "To Do"}
+license = {file = "LICENSE"}
 authors = [
     {name = "Owen Hassall", email = "owen@proximity.dev"}
 ]
