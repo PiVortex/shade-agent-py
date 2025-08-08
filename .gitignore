@@ -9,8 +9,8 @@ wheels/
 .mypy_cache/
 
 # Virtual environments
-.venv
+**/.venv
 
 # Environment variables
-*.env
-*.env.development.local
+**/.env
+**/.env.development.local

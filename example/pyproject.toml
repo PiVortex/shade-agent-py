@@ -1,7 +1,0 @@
-[project]
-name = "my-shade-agent-app"
-version = "0.1.0"
-description = "Shade Agent Python Example"
-readme = "README.md"
-requires-python = ">=3.8"
-dependencies = []

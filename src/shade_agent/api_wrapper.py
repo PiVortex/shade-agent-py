@@ -7,8 +7,10 @@ import httpx
 
 
 API_PORT = os.getenv('API_PORT', '3140')
-API_PATH = 'shade-agent-api' if re.match(r'sandbox', os.getenv('NEXT_PUBLIC_contractId', '')) else 'localhost'
-
+if os.getenv('ENV') == 'production':
+    API_PATH = 'shade-agent-api'
+else:
+    API_PATH = 'localhost'
 
 class AgentAccountIdResponse(TypedDict):
     """Response type for agent account ID."""
