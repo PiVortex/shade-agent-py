@@ -9,10 +9,7 @@ from .api_wrapper import (
     agent_view,
     agent_call,
     request_signature,
-    ContractArgs,
-    SignatureKeyType,
-    AgentAccountIdResponse,
-    AgentInfoResponse
+    SignatureKeyType
 )
 
 __all__ = [
@@ -22,8 +19,5 @@ __all__ = [
     'agent_view',
     'agent_call',
     'request_signature',
-    'ContractArgs',
-    'SignatureKeyType',
-    'AgentAccountIdResponse',
-    'AgentInfoResponse'
+    'SignatureKeyType'
 ]

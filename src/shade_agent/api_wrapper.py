@@ -12,6 +12,7 @@ if os.getenv('ENV') == 'production':
 else:
     API_PATH = 'localhost'
 
+
 class AgentAccountIdResponse(TypedDict):
     """Response type for agent account ID."""
     accountId: str
@@ -38,13 +39,6 @@ class SignatureKeyType(Enum):
             return cls.ECDSA
         else:
             raise ValueError(f"Invalid signature key type: {value}. Must be 'Eddsa' or 'Ecdsa'")
-
-
-class ContractArgs:
-    """Type hint for contract arguments."""
-    def __init__(self, method_name: str, args: Dict[str, Any]):
-        self.method_name = method_name
-        self.args = args
 
 
 async def agent(method_name: str, args: Dict[str, Any] = None) -> Dict[str, Any]:
@@ -93,7 +87,7 @@ async def agent_info() -> AgentInfoResponse:
     })
 
 
-async def agent_view(args: ContractArgs) -> Dict[str, Any]:
+async def agent_view(args: Dict[str, Any]) -> Dict[str, Any]:
     """
     Contract view from agent account inside the API
 
@@ -103,13 +97,10 @@ async def agent_view(args: ContractArgs) -> Dict[str, Any]:
     Returns:
         The result of the view method
     """
-    return await agent('view', {
-        'methodName': args.method_name,
-        'args': args.args
-    })
+    return await agent('view', args)
 
 
-async def agent_call(args: ContractArgs) -> Dict[str, Any]:
+async def agent_call(args: Dict[str, Any]) -> Dict[str, Any]:
     """
     Contract call from agent account inside the API
 
@@ -119,10 +110,7 @@ async def agent_call(args: ContractArgs) -> Dict[str, Any]:
     Returns:
         The result of the call method
     """
-    return await agent('call', {
-        'methodName': args.method_name,
-        'args': args.args
-    })
+    return await agent('call', args)
 
 
 async def request_signature(

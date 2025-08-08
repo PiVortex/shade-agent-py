@@ -8,9 +8,9 @@ from shade_agent import (
     agent_call,
     agent_view,
     request_signature,
-    ContractArgs,
     SignatureKeyType
 )
+
 
 async def test_agent_account_id():
     res = await agent_account_id()
@@ -40,10 +40,10 @@ async def test_get_balance():
 async def test_view():
     account_id = (await agent_account_id())['accountId']
     
-    res = await agent_view(ContractArgs(
-        method_name='get_agent',
-        args={'account_id': account_id}
-    ))
+    res = await agent_view({
+        'methodName': 'get_agent',
+        'args': {'account_id': account_id}
+    })
     print(res)
 
 
@@ -51,14 +51,14 @@ async def test_call():
     path = 'foo'
     payload = hashlib.sha256(b'testing').hexdigest()
     
-    res = await agent_call(ContractArgs(
-        method_name='request_signature',
-        args={
+    res = await agent_call({
+        'methodName': 'request_signature',
+        'args': {
             'path': path,
             'payload': payload,
             'key_type': 'Eddsa'
         }
-    ))
+    })
     print(res)
 
 
