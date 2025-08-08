@@ -46,3 +46,25 @@ Run the CLI without building
 cd test
 shade-agent-cli --no-build
 ```
+
+## Publishing 
+
+Build the project 
+```bash 
+python -m build
+```
+
+Test on TestPyPI
+```bash
+python -m twine check dist/*
+```
+
+Publish to TestPyPI
+```bash
+python -m twine upload --repository testpypi dist/*
+```
+
+Publish to PyPI
+```bash
+python -m twine upload dist/*
+```
